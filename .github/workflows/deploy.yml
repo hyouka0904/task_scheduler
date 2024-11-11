@@ -15,7 +15,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.10.0' # 使用你需要的 Flutter 版本
+          flutter-version: '3.10.5' # 替換為支持 Dart SDK ^3.5.4 的 Flutter 版本
 
       - name: Install dependencies
         run: flutter pub get
