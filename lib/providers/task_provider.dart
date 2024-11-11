@@ -128,7 +128,7 @@ class TaskProvider with ChangeNotifier {
   // 新增方法：重置超過72小時未執行的任務
   void resetOldTasks() {
     DateTime now = DateTime.now();
-    Duration threshold = Duration(hours: 72);
+    Duration threshold = const Duration(hours: 72);
 
     for (var task in _taskBox.values) {
       if (task.completedDate != null) {

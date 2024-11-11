@@ -27,7 +27,7 @@ class _TaskTimerDialogState extends State<TaskTimerDialog> {
   }
 
   void _startTimer() {
-    const oneSec = const Duration(seconds: 1);
+    const oneSec = Duration(seconds: 1);
     _timer = Timer.periodic(oneSec, (Timer timer) {
       if (_seconds <= 0) {
         timer.cancel();
@@ -45,11 +45,11 @@ class _TaskTimerDialogState extends State<TaskTimerDialog> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('任務完成'),
-        content: Text('選擇下一步操作'),
+        title: const Text('任務完成'),
+        content: const Text('選擇下一步操作'),
         actions: [
           TextButton(
-            child: Text('移至下一個 Queue'),
+            child: const Text('移至下一個 Queue'),
             onPressed: () {
               Provider.of<TaskProvider>(context, listen: false)
                   .moveToNextQueue(widget.task);
@@ -58,7 +58,7 @@ class _TaskTimerDialogState extends State<TaskTimerDialog> {
             },
           ),
           TextButton(
-            child: Text('完成'),
+            child: const Text('完成'),
             onPressed: () {
               // 完成任務
               if (widget.task.isDaily) {
@@ -110,7 +110,7 @@ class _TaskTimerDialogState extends State<TaskTimerDialog> {
       ),
       actions: [
         TextButton(
-          child: Text('完成'),
+          child: const Text('完成'),
           onPressed: () {
             _timer?.cancel();
             if (widget.task.isDaily) {

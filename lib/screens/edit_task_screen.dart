@@ -7,7 +7,7 @@ import '../providers/task_provider.dart';
 class EditTaskScreen extends StatefulWidget {
   final Task task;
 
-  EditTaskScreen({required this.task});
+  const EditTaskScreen({required this.task});
 
   @override
   _EditTaskScreenState createState() => _EditTaskScreenState();
@@ -31,10 +31,10 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('編輯任務'),
+        title: const Text('編輯任務'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -42,7 +42,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
               // 任務名稱
               TextFormField(
                 initialValue: _name,
-                decoration: InputDecoration(labelText: '名稱'),
+                decoration: const InputDecoration(labelText: '名稱'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return '請輸入名稱';
@@ -56,12 +56,12 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
               // 任務期限
               ListTile(
                 title: Text('期限: ${_deadline.toLocal()}'.split(' ')[0]),
-                trailing: Icon(Icons.calendar_today),
+                trailing: const Icon(Icons.calendar_today),
                 onTap: _pickDeadline,
               ),
               // 是否為日常任務
               SwitchListTile(
-                title: Text('日常任務'),
+                title: const Text('日常任務'),
                 value: _isDaily,
                 onChanged: (bool value) {
                   setState(() {
@@ -69,10 +69,10 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                   });
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
-                child: Text('保存'),
                 onPressed: _submit,
+                child: Text('保存'),
               ),
             ],
           ),

@@ -11,7 +11,7 @@ import 'edit_task_screen.dart';
 class TaskWidget extends StatelessWidget {
   final Task task;
 
-  TaskWidget({required this.task});
+  const TaskWidget({required this.task});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,8 @@ class TaskWidget extends StatelessWidget {
       child: ListTile(
         title: Text(task.name),
         subtitle: Text('期限: $deadlineText'),
-        trailing: task.isDaily ? Icon(Icons.repeat, color: Colors.green) : null,
+        trailing:
+            task.isDaily ? const Icon(Icons.repeat, color: Colors.green) : null,
         onTap: () {
           // 開始執行任務
           showDialog(

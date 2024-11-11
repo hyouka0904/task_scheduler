@@ -8,7 +8,7 @@ import 'task_widget.dart';
 class QueueViewScreen extends StatelessWidget {
   final int queueIndex;
 
-  QueueViewScreen({required this.queueIndex});
+  const QueueViewScreen({required this.queueIndex});
 
   @override
   Widget build(BuildContext context) {

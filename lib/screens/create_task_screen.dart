@@ -14,26 +14,26 @@ class CreateTaskScreen extends StatefulWidget {
 class _CreateTaskScreenState extends State<CreateTaskScreen> {
   final _formKey = GlobalKey<FormState>();
   String _name = '';
-  DateTime _deadline = DateTime.now().add(Duration(days: 1));
-  String _deadlineText =
-      DateFormat('yyyy-MM-dd').format(DateTime.now().add(Duration(days: 1)));
+  DateTime _deadline = DateTime.now().add(const Duration(days: 1));
+  String _deadlineText = DateFormat('yyyy-MM-dd')
+      .format(DateTime.now().add(const Duration(days: 1)));
   bool _isDaily = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('創建任務'),
+        title: const Text('創建任務'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
               // 任務名稱
               TextFormField(
-                decoration: InputDecoration(labelText: '名稱'),
+                decoration: const InputDecoration(labelText: '名稱'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return '請輸入名稱';
@@ -44,27 +44,27 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                   _name = value!;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               // 任務期限選擇
               Row(
                 children: [
-                  Icon(Icons.calendar_today, color: Colors.blueAccent),
-                  SizedBox(width: 10),
+                  const Icon(Icons.calendar_today, color: Colors.blueAccent),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       '期限: $_deadlineText',
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.edit, color: Colors.blueAccent),
+                    icon: const Icon(Icons.edit, color: Colors.blueAccent),
                     onPressed: _pickDeadline,
                   ),
                 ],
               ),
               // 是否為日常任務
               SwitchListTile(
-                title: Text('日常任務'),
+                title: const Text('日常任務'),
                 value: _isDaily,
                 onChanged: (bool value) {
                   setState(() {
@@ -72,10 +72,10 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                   });
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
-                child: Text('創建'),
                 onPressed: _submit,
+                child: const Text('創建'),
               ),
             ],
           ),
@@ -103,7 +103,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       final newTask = Task(
-        id: Uuid().v4(),
+        id: const Uuid().v4(),
         name: _name,
         deadline: _deadline,
         isDaily: _isDaily,

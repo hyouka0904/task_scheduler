@@ -37,13 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('使用說明'),
+        title: const Text('使用說明'),
         content: SingleChildScrollView(
           child: Text(_usageInstructions),
         ),
         actions: [
           TextButton(
-            child: Text('關閉'),
+            child: const Text('關閉'),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ],
@@ -105,19 +105,19 @@ class _HomeScreenState extends State<HomeScreen> {
             destinations: [
               NavigationRailDestination(
                 icon: Icon(Icons.queue, color: _queueColors[0]),
-                label: Text('Queue 1'),
+                label: const Text('Queue 1'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.queue, color: _queueColors[1]),
-                label: Text('Queue 2'),
+                label: const Text('Queue 2'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.queue, color: _queueColors[2]),
-                label: Text('Queue 3'),
+                label: const Text('Queue 3'),
               ),
             ],
           ),
-          VerticalDivider(thickness: 1, width: 1),
+          const VerticalDivider(thickness: 1, width: 1),
           // 主內容
           Expanded(
             child: Column(
@@ -130,10 +130,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Text(
                           'Queue ${_selectedQueueIndex + 1}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.info, color: Colors.white),
+                        icon: const Icon(Icons.info, color: Colors.white),
                         onPressed: _showInfoDialog,
                         tooltip: '使用說明',
                       ),
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: currentQueue.isEmpty
-                      ? Center(child: Text('沒有任務'))
+                      ? const Center(child: Text('沒有任務'))
                       : ListView.builder(
                           itemCount: currentQueue.length,
                           itemBuilder: (context, index) {
@@ -171,8 +171,8 @@ class _HomeScreenState extends State<HomeScreen> {
             MaterialPageRoute(builder: (context) => CreateTaskScreen()),
           );
         },
-        child: Icon(Icons.add),
         tooltip: '創建任務',
+        child: const Icon(Icons.add),
       ),
     );
   }
