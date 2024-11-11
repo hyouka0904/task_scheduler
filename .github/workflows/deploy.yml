@@ -10,19 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 檢出代碼
       - uses: actions/checkout@v3
 
+      # 設置 Flutter 環境
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.10.5' # 替換為支持 Dart SDK ^3.5.4 的 Flutter 版本
+          flutter-version: '3.10.5' # 更新為你使用的 Flutter 版本
 
+      # 安裝依賴
       - name: Install dependencies
         run: flutter pub get
 
+      # 構建 Flutter Web 應用
       - name: Build Flutter Web
         run: flutter build web
 
+      # 創建 .nojekyll 文件以禁用 Jekyll
+      - name: Create .nojekyll file
+        run: echo > build/web/.nojekyll
+
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
